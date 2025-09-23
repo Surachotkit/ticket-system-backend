@@ -59,3 +59,27 @@ npx prisma studio
 ```
 npm run start
 ```
+
+## Structure
+ticket-system--backend/
+├── node_modules/
+├── prisma/
+│   ├── schema.prisma
+│   └── migrations/
+├── src/
+│   ├── app.module.ts
+│   ├── main.ts
+│   ├── prisma.service.ts
+│   ├── tickets/
+│   │   ├── dto/
+│   │   │   ├── create-ticket.dto.ts
+│   │   │   ├── update-ticket.dto.ts
+│   │   │   └── find-ticket-dto.ts
+│   │   ├── tickets.controller.ts
+│   │   ├── tickets.service.ts
+│   │   └── tickets.module.ts
+├── package.json
+├── tsconfig.json
+├── .env
+├── .gitignore
+└── README.md
