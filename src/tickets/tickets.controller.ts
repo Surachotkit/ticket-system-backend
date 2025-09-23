@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Param, ParseIntPipe, Patch, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, NotFoundException, Param, ParseIntPipe, Patch, Post, Query, ValidationPipe } from '@nestjs/common';
 import { TicketsService } from './tickets.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { FindTicketDto } from './dto/find-ticket-dto';
 
 @Controller('tickets')
 export class TicketsController {
@@ -18,13 +19,22 @@ export class TicketsController {
   }
 
   @Get()
-  findAll() {
-    return this.ticketsService.findAll();
+    async findAll(@Query(new ValidationPipe({ transform: true })) findTicketDto: FindTicketDto) {
+    try {
+      return await this.ticketsService.findAll(findTicketDto);
+    } catch (error) {
+      console.error('Find tickets error:', error);
+      throw new HttpException('Failed to fetch tickets', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.ticketsService.findOne(id);
+  async findOne(@Param('id', ParseIntPipe) id: number) {
+    const ticket = await this.ticketsService.findOne(id);
+    if (!ticket) {
+      throw new NotFoundException(`Ticket with ID ${id} not found`);
+    }
+    return ticket;
   }
 
   @Patch(':id')
