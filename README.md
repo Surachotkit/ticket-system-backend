@@ -61,6 +61,7 @@ npm run start
 ```
 
 ## Structure
+```
 ticket-system--backend/
 ├── node_modules/
 ├── prisma/
@@ -82,4 +83,5 @@ ticket-system--backend/
 ├── tsconfig.json
 ├── .env
 ├── .gitignore
+```
 └── README.md
