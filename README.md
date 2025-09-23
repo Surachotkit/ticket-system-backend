@@ -1,7 +1,7 @@
-# Ticket System Backend
+## Ticket System Backend
 Ticket System ใช้ Nest.js + TypeScript + Prisma ORM + PostgreSQL
 
-# ✨Features
+## ✨Features
 - CRUD Tickets
 - Validation (title, descroption, priority, status)
 ```
@@ -12,28 +12,28 @@ PATCH /tickets/:id → update ticket
 DELETE /tickets/:id → delete ticket
 ```
 
-# Install dependencies
+## Install dependencies
 ```
 npm install
 ```
 
-# Create .env
+## Create .env
 ```
 DATABASE_URL="postgresql://username@localhost:5432/ticket_system"
 PORT=4000
 ```
-# Server
+## Run Server
 ```
 http://localhost:4000
 ```
 
-# Create Database local (MacOS)
+## Create Database local (MacOS)
 ```
 brew services list
 brew services start postgresql@17
 createdb -U username ticket_system
 ```
-# Connect database postgresql
+## Connect database postgresql
 ```
 host: localhost
 Port: 5432
@@ -41,21 +41,21 @@ database: ticket_system
 username: username
 ```
 
-# Prisma ORM
-# Generate Prisma Client
+## Prisma ORM
+## Generate Prisma Client
 ```
 npx prisma generate
 ```
-# Migrate database
+## Migrate database
 ```
 npx prisma migrate dev --name init
 ```
-# [Optional] Check database on brownser
+## [Optional] Check database on brownser
 ```
 npx prisma studio
 ```
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 ```
 npm run start
 ```
